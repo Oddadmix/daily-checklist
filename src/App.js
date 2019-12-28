@@ -73,6 +73,7 @@ export default class App extends React.Component {
 
   render() {
     return <div class="col-xs-12">
+    <h2>Add New Item</h2>
       <ul class="list-group">{this.istItems()}</ul>
       <br />
 
