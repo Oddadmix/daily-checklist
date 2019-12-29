@@ -37,7 +37,7 @@ export default class App extends React.Component {
 
   istItems = () => Object.keys(this.state.tasks).sort((a, b) => parseInt(a) - parseInt(b)).map(key =>
     <li class="list-group-item d-flex justify-content-between align-items-center">
-      <div class="checkbox" key={key} style={{ marginBottom: 20 }}>
+      <div class="checkbox" key={key}>
         <label><input type="checkbox" data-key={key} onChange={() => this.checkedBox(key)} checked={this.state.tasks[key].checked} /> {this.state.tasks[key].value}</label>
 
         <button onClick={() => this.deleteItem(key)} class="btn btn-default btn-xs pull-right remove-item">
@@ -72,19 +72,27 @@ export default class App extends React.Component {
   }
 
   render() {
-    return <div class="col-xs-12">
-    <h2>Add New Item</h2>
-      <ul class="list-group">{this.istItems()}</ul>
-      <br />
+    return <div class="col-lg-12">
+      <div class="card text-center">
+        <div class="card-body">
+        <h5 class="card-title">Daily Checklist</h5>
+          <ul class="list-group text-center">{this.istItems()}</ul>
 
-      <input type="text" value={this.state.value} onChange={this.handleChange} />
-      <br />
-      <br />
-      <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-lg btn-primary" onClick={this.addItem}>Add</button>
+          <div class="form-group">
+            <label for="exampleInputEmail1"><b>Add New Item</b></label>
+            <input type="text" id="exampleInputEmail1" class="form-control" value={this.state.value} onChange={this.handleChange} />
+          </div>
 
-        <button type="button" class="btn btn-lg btn-danger" onClick={this.resetAll}>Reset All</button>
+          <div class="form-group">
+            <button type="button" class="btn btn-lg btn-primary" style={{marginLeft: 20}} onClick={this.addItem}>Add</button>
+
+            <button type="button" class="btn btn-lg btn-danger" style={{marginLeft: 20}} onClick={this.resetAll}>Reset All</button>
+          </div>
+
+
+        </div>
       </div>
+
     </div>;
   }
 }
